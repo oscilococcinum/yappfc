@@ -10,10 +10,19 @@
     in{
       devShells.x86_64-linux.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
-          python39
-        ];
+          python312
+          calculix
+        ] ++ (
+        with python312Packages; [
+            meshio
+            numpy
+            matplotlib
+            pyside6
+            pyvista
+        ]);
 
         shellHook = ''
+          
         '';
         };
     };
