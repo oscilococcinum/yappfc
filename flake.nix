@@ -1,5 +1,3 @@
-# flake.nix
-# https://www.youtube.com/watch?v=yQwW8dkuHqw
 {
   inputs = {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -10,17 +8,13 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in{
-      devShells.x86_64-linux.default =
-        pkgs.mkShell
-          {
-            nativeBuildInputs = with pkgs; [
-              python39
-            ];
+      devShells.x86_64-linux.default = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [
+          python39
+        ];
 
-            shellHook = ''
-            zsh
-            '';
-
-          };
+        shellHook = ''
+        '';
+        };
     };
 }
